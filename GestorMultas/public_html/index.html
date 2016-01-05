@@ -19,13 +19,13 @@ and open the template in the editor.
     </head>
     <body>
         <div id="menu" class="table-responsive">
-        <table class="table table-hover">
-            <tr><td width="300" align="center">MENU GESTIONES</td></tr>
-                <tr id="cli"><td>1.CLIENTES</td></tr>
-                <tr ><td>2.RECLAMOS</td></tr>
-                <tr><td>3.EMPLEADOS</td></tr>
-                <tr><td>4.FACTURA</td></tr>
-        </table>
+            <table class="table table-hover">
+                <tr><td width="300" align="center">MENU GESTIONES</td></tr>
+                    <tr id="cli"><td>1.CLIENTES</td></tr>
+                    <tr id="rec"><td>2.RECLAMOS</td></tr>
+                    <tr id="emp"><td>3.EMPLEADOS</td></tr>
+                    <tr id="fact"><td>4.FACTURA</td></tr>
+            </table>
         </div>
         <div id="cliente" class="table-responsive">
             <table class="table table-hover">
@@ -33,16 +33,16 @@ and open the template in the editor.
                 <tr id="altaCliente"><td>1.ALTA CLIENTE</td></tr>
                 <tr><td>2.MODIFICAR CLIENTE</td></tr>
                 <tr><td>3.ELIMINAR CLIENTE</td></tr>
-                <tr><td>4.SALIR</td></tr>                
+                <tr id="salir"><td>4.SALIR</td></tr>                
             </table>
         </div>
         <div id="reclamo" class="table-responsive">
             <table class="table table-hover">
                 <tr><td width="300" align="center">MENU RECLAMOS</td></tr>
-                <tr><td>1.NUEVO RECLAMO</td></tr>
+                <tr id="altaReclamo"><td>1.NUEVO RECLAMO</td></tr>
                 <tr><td>2.ACTUALIZACION DE RECLAMO</td></tr>
                 <tr><td>3.SEGUIMIENTO DE RECLAMO</td></tr>
-                <tr><td>4.SALIR</td></tr>                
+                <tr name="salir"><td>4.SALIR</td></tr>               
             </table>
         </div>
         <div id="empleado" class="table-responsive">
@@ -59,9 +59,36 @@ and open the template in the editor.
                 <tr><td width="300" align="center">MENU FACTURAS</td></tr>
                 <tr><td>1.EMITIR FACTURA</td></tr>
                 <tr><td>2.VER HISTORIAL DE FACTURAS</td></tr>
-                <tr><td>3.SALIR</td></tr>                
+                <tr id="salir"><td>3.SALIR</td></tr>                
             </table>
         </div>
+        
+        <!-- FORMULARIO RECLAMO -->
+        
+        <form role="form" action="" name="altaRecl" method="GET" id="altaRecl">
+            <fieldset>
+                <legend>Datos Reclamación</legend>
+                <div class="form-group">
+                    <label for="numId">Número de Id.</label>
+                    <input name="numId"  type="text" id="numId" placeholder="NumId" class="form-control" tabindex="1" title="numId">
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input name="estado" type="text" id="email" placeholder="Estado" class="form-control" tabindex="2" title="estado">
+                </div>	   		
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input name="fecha" type="text" id="fecha" class="form-control" placeholder="Fecha" tabindex="3" title="fecha">
+                </div>
+            </fieldset>
+            <div class="form-group col-xs-12">
+               <input type="button" name="enviar" id="enviar" class="btn btn-primary" tabindex="10" value="Enviar">
+               <input type="reset" tabindex="11" class="btn btn-primary" value="Borrar">
+            </div>
+        </form>
+        
+        <!-- FORMULARIO CLIENTE -->
+        
         <form role="form" action="" name="altaCli" method="GET" id="altaCli">
             <fieldset>
                 <legend>Datos de cliente</legend>
@@ -95,11 +122,12 @@ and open the template in the editor.
                <input type="reset" tabindex="11" class="btn btn-primary" value="Borrar">
             </div>
         </form>
+        
         <div id="mensajes">
             <h2 id="textoMensaje"></h2>
             <input id="boton" type="button" value="Aceptar"/>
         </div>
         <div id="capaTransparente"></div>
-        <div id="prueba"></div>
+       
     </body>
 </html>
