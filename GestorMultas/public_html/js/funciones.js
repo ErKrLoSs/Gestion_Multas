@@ -6,9 +6,13 @@ function inicio(){
     document.getElementById("cli").addEventListener('click',mostrarFomularioCliente,false);
     document.getElementById("altaCliente").addEventListener('click',mostrarAltaCliente,false);
     document.getElementById("enviar").addEventListener("click",clienteN,false);
+    document.getElementById("rec").addEventListener("click",mostrarFormReclamo,false);
+    document.getElementById("salir").addEventListener("click",mostrarMenuPrincipal,false);
+    document.getElementByName("salir").addEventListener("click",mostrarMenuPrincipal,false);
     
 }
 //-----------------Funciones para ocultar formularios-------------------------//
+    //Buscar checkbox en QuintoCar
 function ocultarTipoCliente(){
     var oTipoAnual = document.getElementById("grupoTarifaMiembro");
     var oTipoMes = document.getElementById("grupoTarifaMes");
@@ -59,12 +63,24 @@ function mensaje(sMensaje){
 //    var oCapaTransparente = document.getElementById("capaTransparente");
 //    oCapaTransparente.style.zIndex = -1;
 //}
+function mostrarMenuPrincipal(){
+    document.getElementById("reclamo").style.display = "none";
+    document.getElementById("cliente").style.display = "none";
+    document.getElementById("menu").style.display ="block";
 
+}
 function mostrarFomularioCliente(){
     var oMenu = document.getElementById("menu");
     var oUsu = document.getElementById("cliente");
     oMenu.style.display = "none";
     oUsu.style.display = "block";
+}
+
+function mostrarFormReclamo(){
+    var oMenu = document.getElementById("menu");
+    var oRec = document.getElementById("reclamo");
+    oMenu.style.display = "none";
+    oRec.style.display = "block";
 }
 
 function mostrarAltaCliente(){
@@ -84,6 +100,17 @@ function clienteN(){
         mensaje(oGestorMultas.altaCliente(oCliente));
     }
 }
+
+function reclamoN(){
+    var sId,sEstado,sFecha,oReclamo;  
+    //sId = ;
+    //sEstado = ;   
+    //sFecha = ;
+    if(validaReclamo() == true){
+        oReclamo = new Reclamo(sId,sEstado,sFecha);
+        mensaje(oGestorMultas.altaReclamo(oReclamo));
+    }
+}
 //--------------------------Funciones de validacion---------------------------//
 function validarUsuario(){
     //var oE = oEvento || window.event;
@@ -95,63 +122,60 @@ function validarUsuario(){
     document.altaCli.nombre.value = document.altaCli.nombre.value.trim();
 
     var oExpReg = /[a-zA-Z\s]{3,40}/;
-
-    if (oExpReg.test(sNombre) == false){
-        if(bValido == true){
-            bValido = false;		
-            document.altaCli.nombre.focus();		
+        if (oExpReg.test(sNombre) == false){
+            if(bValido == true){
+                bValido = false;		
+                document.altaCli.nombre.focus();		
+            }
+            sErrores += "Nombre incorrecto<br>";
+            document.altaCli.nombre.classList.add("error");//Marcaciones de error, si entra lo marcara, si pasa por el else lo desmarca.
+        }else{
+            document.altaCli.nombre.classList.remove("error");
+            //eliminar con el listClass.remove("error");
         }
-        sErrores += "Nombre incorrecto<br>";
-        document.altaCli.nombre.classList.add("error");//Marcaciones de error, si entra lo marcara, si pasa por el else lo desmarca.
-    }else{
-        document.altaCli.nombre.classList.remove("error");
-        //eliminar con el listClass.remove("error");
-    }
         
 	//Validacion del apellido
     var sApellido = document.altaCli.ape.value.trim();
     document.altaCli.ape.value = document.altaCli.ape.value.trim();
-               
-    if (oExpReg.test(sApellido) == false){
-
-        if(bValido == true){
-            bValido = false;		
-            document.altaCli.ape.focus();		
+         if (oExpReg.test(sApellido) == false){
+            if(bValido == true){
+                bValido = false;		
+                document.altaCli.ape.focus();		
+            }
+            sErrores += "Apellidos incorrecto<br>";
+            document.altaCli.ape.classList.add("error");
         }
-        sErrores += "Apellidos incorrecto<br>";
-        document.altaCli.ape.classList.add("error");
+        else {
+            document.altaCli.ape.classList.remove("error");	
+        }
 
-    }
-    else {
-        document.altaCli.ape.classList.remove("error");	
-    }
-    
         //validacion del campo nif
     var sNif = document.altaCli.nif.value.trim();
-    document.altaCli.nif.value = document.altaCli.nif.value.trim();
+        document.altaCli.nif.value = document.altaCli.nif.value.trim();
         
     var oExpRegNif = /[0-9]{7}[A-Z]/;
-
-    if (oExpRegNif.test(sNif) == false){
-        if(bValido == true){
-            bValido = false;		
-            document.altaCli.nif.focus();		
+        if (oExpRegNif.test(sNif) == false){
+            if(bValido == true){
+                bValido = false;		
+                document.altaCli.nif.focus();		
+            }
+            sErrores += "Nif incorrecto<br>";
+            document.altaCli.nif.classList.add("error");	
         }
-        sErrores += "Nif incorrecto<br>";
-        document.altaCli.nif.classList.add("error");	
-    }
-    else {
-        document.altaCli.nif.classList.remove("error");	
-    }
-    
-    if(document.altaCli.tipoCli[0].checked){
-        var formulario = document.getElementById("grupoTarifaMiembro");
-        formulario.style.display = "block";
-    }
-                
+        else {
+            document.altaCli.nif.classList.remove("error");	
+        }
+
+        if(document.altaCli.tipoCli[0].checked){
+            var formulario = document.getElementById("grupoTarifaMiembro");
+            formulario.style.display = "block";
+        }
+
     //Condicion para enviar formulario solo si todos los datos son correctos
-    if (bValido == false){
+        if (bValido == false){
         mensaje(sErrores);
-    }
+        }
+    
     return bValido;
 }
+function validaReclamo(){}
