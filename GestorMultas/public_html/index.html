@@ -23,7 +23,7 @@ and open the template in the editor.
                 <tr><td width="300" align="center">MENU GESTIONES</td></tr>
                     <tr id="cli"><td>1.CLIENTES</td></tr>
                     <tr id="rec"><td>2.RECLAMOS</td></tr>
-                    <tr id="emp"><td>3.EMPLEADOS</td></tr>
+                    <tr id="menuEmpleado"><td>3.EMPLEADOS</td></tr>
                     <tr id="fact"><td>4.FACTURA</td></tr>
             </table>
         </div>
@@ -33,7 +33,7 @@ and open the template in the editor.
                 <tr id="altaCliente"><td>1.ALTA CLIENTE</td></tr>
                 <tr><td>2.MODIFICAR CLIENTE</td></tr>
                 <tr><td>3.ELIMINAR CLIENTE</td></tr>
-                <tr id="salir"><td>4.SALIR</td></tr>                
+                <tr name="salir"><td>4.SALIR</td></tr>
             </table>
         </div>
         <div id="reclamo" class="table-responsive">
@@ -48,9 +48,9 @@ and open the template in the editor.
         <div id="empleado" class="table-responsive">
             <table class="table table-hover">
                 <tr><td width="300" align="center">MENU EMPLEADOS</td></tr>
-                <tr><td>1.ALTA EMPLEADO</td></tr>
-                <tr><td>2.MODIFICAR EMPLEADO</td></tr>
-                <tr><td>3.ELIMINAR EMPLEADO</td></tr>
+                <tr id="altaEmpleado"><td>1.ALTA EMPLEADO</td></tr>
+                <tr id="modificaEmpleado"><td>2.MODIFICAR EMPLEADO</td></tr>
+                <tr id="eliminarEmpleado"><td>3.ELIMINAR EMPLEADO</td></tr>
                 <tr><td>4.SALIR</td></tr>                
             </table>
         </div>
@@ -59,7 +59,7 @@ and open the template in the editor.
                 <tr><td width="300" align="center">MENU FACTURAS</td></tr>
                 <tr><td>1.EMITIR FACTURA</td></tr>
                 <tr><td>2.VER HISTORIAL DE FACTURAS</td></tr>
-                <tr id="salir"><td>3.SALIR</td></tr>                
+                <tr name="salir"><td>3.SALIR</td></tr>
             </table>
         </div>
         
@@ -122,7 +122,98 @@ and open the template in the editor.
                <input type="reset" tabindex="11" class="btn btn-primary" value="Borrar">
             </div>
         </form>
-        
+        <!--- FORMULARIO ALTA EMPLEADO -->
+        <form role="form" action="" name="altaEmp" method="GET" id="altaEmp">
+            <fieldset>
+                <legend>Datos de Empleado</legend>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input name="nombrEmp"  type="text" id="nombrEmp" placeholder="Nombre" class="form-control" tabindex="1" title="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apEmp">Apellidos</label>
+                    <input name="apelEmp" type="text" id="apelEmp" placeholder="Apellidos" class="form-control" tabindex="2" title="Apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="nifEmp">Dni</label>
+                    <input name="nifEmp" type="text" id="nifEmp" class="form-control" placeholder="NIF" tabindex="3" title="Nif">
+                </div>
+                <div class="form-group">
+                    <label for="telEmp">Telefono Contacto</label>
+                    <input name="telEmp" type="text" id="telEmp" class="form-control" placeholder="Telefono" tabindex="3" title="Telefono">
+                </div>
+                <div class="form-group">
+                    <label for="sue">Sueldo</label>
+                    <input name="sueldo" type="text" id="sueldo" class="form-control" placeholder="Sueldo" tabindex="3" title="Sueldo">
+                </div>
+            </fieldset>
+            <div class="form-group col-xs-12">
+                <input type="button" name="enviarEmp" id="enviarEmp" class="btn btn-primary" tabindex="10" value="Enviar">
+                <input type="reset" tabindex="10" class="btn btn-primary" value="Borrar">
+                <input type="button" id="atrasEmp"  tabindex="10" class="btn btn-primary" name="volver" value="Volver atrás">
+            </div>
+        </form>
+        <!-- MODIFICAR EMPLEADO ---------->
+        <form role="form" action="" name="modificaDniEmp" method="GET" id="modificaDniEmp">
+            <fieldset>
+                <legend>Datos</legend>
+                <div class="form-group">
+                    <label for="nif2">Introduce dni para modificar</label>
+                    <input name="modiNifEmp" type="text" id="modiNifEmp" class="form-control" placeholder="NIF" tabindex="3" title="Nif">
+                </div>
+                <div class="form-group col-xs-12">
+                    <input type="button" name="enviar" id="modDniEmp" class="btn btn-primary" tabindex="10" value="Enviar">
+                    <input type="reset" tabindex="10" class="btn btn-primary" value="Borrar">
+                    <input type="button" id="atrasEmpDni" tabindex="10" class="btn btn-primary" name="volver" value="Volver atrás">
+                </div>
+            </fieldset>
+        </form>
+        <form role="form" action="" name="modEmp" method="GET" id="modEmp">
+            <fieldset>
+                <legend>Datos para la modificacion de un empleado</legend>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input name="nombreModEmp"  type="text" id="nombreModEmp" placeholder="Nombre" class="form-control" tabindex="1" title="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="ape">Apellidos</label>
+                    <input name="apeModEmp" type="text" id="apeModEmp" placeholder="Apellidos" class="form-control" tabindex="2" title="Apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="nif">Dni</label>
+                    <input name="nifModEmp" type="text" id="nifModEmp" class="form-control" placeholder="NIF" tabindex="3" title="Nif">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Telefono Contacto</label>
+                    <input name="telModEmp" type="text" id="telefonoModEmp" class="form-control" placeholder="Telefono" tabindex="3" title="Telefono">
+                </div>
+                <div class="form-group">
+                    <label for="suel">Sueldo</label>
+                    <input name="sueldoModEmp" type="text" id="sueldoModEmp" class="form-control" placeholder="Sueldo" tabindex="3" title="Sueldo">
+                </div>
+            </fieldset>
+            <div class="form-group col-xs-12">
+                <input type="button" name="enviar" id="enviarModEmp" class="btn btn-primary" tabindex="10" value="Enviar">
+                <input type="reset" tabindex="10" class="btn btn-primary" value="Borrar">
+                <input type="button" id="atrasModificacionEmpleado" tabindex="10" class="btn btn-primary" name="atrasModificacionEmpleado" value="Volver atrás">
+            </div>
+        </form>
+        <!--------------- BORRAR EMPLEADO -->
+        <form role="form" action="" name="eliminarDniEmp" method="GET" id="eliminarDniEmp">
+            <fieldset>
+                <legend>Datos</legend>
+                <div class="form-group">
+                    <label for="nif2">Introduce dni para borrar</label>
+                    <input name="nif2Emp" type="text" id="nif2Emp" class="form-control" placeholder="NIF" tabindex="3" title="Nif">
+                </div>
+                <div class="form-group col-xs-12">
+                    <input type="button" name="enviarEmp" id="enviarDniEmp" class="btn btn-primary" tabindex="10" value="Enviar">
+                    <input type="reset" tabindex="10" class="btn btn-primary" value="Borrar">
+                    <input type="button" id="atrasBorrarEmp" tabindex="10" class="btn btn-primary" name="volver" value="Volver atrás">
+                </div>
+            </fieldset>
+        </form>
+
         <div id="mensajes">
             <h2 id="textoMensaje"></h2>
             <input id="boton" type="button" value="Aceptar"/>
